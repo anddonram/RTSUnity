@@ -1,0 +1,10 @@
+.cs/
+.vs/
+Assembly/
+Builds/
+Library/
+obj/
+ProjectSettings/
+RTS.*
+Assembly*
+Assets/Standard Assets/
