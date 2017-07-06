@@ -184,7 +184,7 @@ namespace Prototype.NetworkLobby
         {
             if (_isMatchmaking)
             {
-                matchMaker.DestroyMatch((NetworkID)_currentMatchID, OnDestroyMatch);
+                matchMaker.DestroyMatch((NetworkID)_currentMatchID,1, OnDestroyMatch);
                 _disconnectServer = true;
             }
             else
@@ -240,13 +240,13 @@ namespace Prototype.NetworkLobby
             SetServerInfo("Hosting", networkAddress);
         }
 
-        public override void OnMatchCreate(CreateMatchResponse matchInfo)
-        {
-            base.OnMatchCreate(matchInfo);
+		public override void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
+		{
+			base.OnMatchCreate( success,  extendedInfo,  matchInfo);
             _currentMatchID = (ulong)matchInfo.networkId;
         }
 
-        public void OnDestroyMatch(BasicResponse extendedInfo)
+		public override void OnDestroyMatch(bool success, string extendedInfo)
         {
             if (_disconnectServer)
             {

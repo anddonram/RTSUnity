@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class Unit : WorldObject
 {
 
-	protected NavMeshAgent nav;
+	protected UnityEngine.AI.NavMeshAgent nav;
 	protected Building nextBuilding;
 	[SyncVar]
 	private float
@@ -21,7 +21,7 @@ public class Unit : WorldObject
 	protected override void Awake ()
 	{
 		base.Awake ();
-		nav = GetComponent<NavMeshAgent> ();
+		nav = GetComponent<UnityEngine.AI.NavMeshAgent> ();
 	
 	}
 

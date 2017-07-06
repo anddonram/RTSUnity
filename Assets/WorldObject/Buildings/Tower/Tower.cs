@@ -34,7 +34,7 @@ public class Tower : Building {
 		}
 	}
 	void Activate(bool active){
-		onTop.GetComponent<NavMeshAgent> ().enabled=active;
+		onTop.GetComponent<UnityEngine.AI.NavMeshAgent> ().enabled=active;
 		owner.RpcActivate (onTop.gameObject,active);
 
 	}

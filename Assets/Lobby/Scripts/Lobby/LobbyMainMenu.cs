@@ -61,7 +61,7 @@ namespace Prototype.NetworkLobby
                 matchNameInput.text,
                 (uint)lobbyManager.maxPlayers,
                 true,
-                "",
+                "","","",1,1,
                 lobbyManager.OnMatchCreate);
 
             lobbyManager.backDelegate = lobbyManager.StopHost;

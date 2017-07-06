@@ -34,9 +34,9 @@ namespace Prototype.NetworkLobby
             RequestPage(0);
         }
 
-        public void OnGUIMatchList(ListMatchResponse response)
+		public void OnGUIMatchList(bool success, string extendedInfo,List<MatchInfoSnapshot> response)
         {
-            if (response.matches.Count == 0)
+            if (response.Count == 0)
             {
                 if (currentPage == 0)
                 {
@@ -52,11 +52,11 @@ namespace Prototype.NetworkLobby
             foreach (Transform t in serverListRect)
                 Destroy(t.gameObject);
 
-            for (int i = 0; i < response.matches.Count; ++i)
+            for (int i = 0; i < response.Count; ++i)
             {
                 GameObject o = Instantiate(serverEntryPrefab) as GameObject;
 
-                o.GetComponent<LobbyServerEntry>().Populate(response.matches[i], lobbyManager, (i%2 == 0) ? OddServerColor : EvenServerColor);
+                o.GetComponent<LobbyServerEntry>().Populate(response[i], lobbyManager, (i%2 == 0) ? OddServerColor : EvenServerColor);
 
                 o.transform.SetParent(serverListRect, false);
             }
@@ -77,7 +77,7 @@ namespace Prototype.NetworkLobby
         {
             previousPage = currentPage;
             currentPage = page;
-            lobbyManager.matchMaker.ListMatches(page, 6, "", OnGUIMatchList);
+            lobbyManager.matchMaker.ListMatches(page, 6, "", true,1,1,OnGUIMatchList);
         }
     }
 }

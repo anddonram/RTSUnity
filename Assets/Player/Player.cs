@@ -662,7 +662,7 @@ public class Player : NetworkBehaviour
 	[ClientRpc]
 	public void RpcActivate (GameObject g, bool active)
 	{
-		g.GetComponent<NavMeshAgent> ().enabled = active;
+		g.GetComponent<UnityEngine.AI.NavMeshAgent> ().enabled = active;
 		foreach (Collider col in g.GetComponentsInChildren<Collider>()) {
 			col.enabled = active;
 		}
